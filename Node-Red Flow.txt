@@ -1,0 +1,122 @@
+[
+    {
+        "id": "11518659.18be7a",
+        "type": "tab",
+        "label": "Cat Feeder Alarm"
+    },
+    {
+        "id": "bd626c23.40f",
+        "type": "twitter out",
+        "z": "11518659.18be7a",
+        "twitter": "",
+        "name": "Tweet",
+        "x": 1085,
+        "y": 182,
+        "wires": []
+    },
+    {
+        "id": "fe159cfc.c2921",
+        "type": "mqtt in",
+        "z": "11518659.18be7a",
+        "name": "Dishka",
+        "topic": "cat/bowl",
+        "qos": "0",
+        "broker": "d0e87662.1eee38",
+        "x": 303,
+        "y": 218,
+        "wires": [
+            [
+                "a2914141.28af4",
+                "319d150f.7e308a"
+            ]
+        ]
+    },
+    {
+        "id": "a2914141.28af4",
+        "type": "debug",
+        "z": "11518659.18be7a",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 512,
+        "y": 281,
+        "wires": []
+    },
+    {
+        "id": "319d150f.7e308a",
+        "type": "switch",
+        "z": "11518659.18be7a",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 1,
+        "x": 640,
+        "y": 145,
+        "wires": [
+            [
+                "77a35414.0bc7fc"
+            ]
+        ]
+    },
+    {
+        "id": "b25fb874.f39628",
+        "type": "debug",
+        "z": "11518659.18be7a",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 1099,
+        "y": 85,
+        "wires": []
+    },
+    {
+        "id": "77a35414.0bc7fc",
+        "type": "trigger",
+        "z": "11518659.18be7a",
+        "op1": "@spiessa Diska is really hugry",
+        "op2": "",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "1",
+        "extend": true,
+        "units": "hr",
+        "reset": "",
+        "name": "",
+        "x": 830,
+        "y": 145,
+        "wires": [
+            [
+                "bd626c23.40f",
+                "b25fb874.f39628"
+            ]
+        ]
+    },
+    {
+        "id": "d0e87662.1eee38",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "192.168.0.203",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    }
+]
